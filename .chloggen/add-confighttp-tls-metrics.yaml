@@ -1,0 +1,28 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/confighttp
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (``).
+note: Add TLS handshake duration and active connections metrics to confighttp server
+
+# One or more tracking issues related to the change
+issues: [14523]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+subtext: |
+  Adds the following metrics to the confighttp server:
+  - `otelcol_confighttp_server_tls_handshake_duration` - histogram of TLS handshake durations
+  - `otelcol_confighttp_server_active_connections` - gauge of currently active connections
+  These metrics are gated behind a feature flag `confighttp.serverMetrics` and are
+  disabled by default until stabilization.
+
+# Optional: The change log or logs in which this entry should be included.
+# e.g. '[user-facing]' or '[user-facing, api]'
+# Include 'user-facing' if the change is relevant to end users.
+# Include 'api' if there is a change to a library API.
+# Default: '[user-facing]'
+change_logs: [user-facing, api]
