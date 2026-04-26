@@ -1,0 +1,31 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/configgrpc
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`)
+note: Add TLS-related metrics instrumentation to configgrpc, reporting TLS handshake duration and connection establishment metrics with endpoint labels.
+
+# One or more tracking issues related to the change
+issues: [14412]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+subtext: |
+  Adds the following metrics to configgrpc when TLS is configured:
+  - `otelcol_configgrpc_tls_handshake_duration`: histogram of TLS handshake durations in seconds
+  - `otelcol_configgrpc_connections_established`: counter of established gRPC connections
+  Both metrics include an `endpoint` label identifying the target endpoint.
+
+# If your change doesn't affect end users or the exported elements of any package,
+# you should instead start your pull request title with [chore] or use the 'chore' change type.
+# Examples of elements that are NOT exported include:
+#   - Instrumentation changes (adding metrics, logging, tracing)
+#   - Changes to test files
+#   - Changes to internal packages
+#   - Refactoring
+# If you are adding a new change log entry for an EXISTING issue that already has a change log entry,
+# you should update the existing entry rather than creating a new one.
+change_type_override: enhancement
