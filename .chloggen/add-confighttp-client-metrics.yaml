@@ -1,0 +1,23 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/confighttp
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (``).
+change_description: Add client-side HTTP metrics (request count, duration, request/response body size) to confighttp, labeled with endpoint and HTTP method.
+
+# One or more tracking issues related to the change
+issues: [14412]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+additional_details: |
+  Adds the following metrics to HTTP clients configured via confighttp:
+  - `http.client.request.count` (counter): Number of outbound HTTP requests.
+  - `http.client.duration` (histogram): Duration of outbound HTTP requests in milliseconds.
+  - `http.client.request.body.size` (histogram): Size of outbound HTTP request bodies in bytes.
+  - `http.client.response.body.size` (histogram): Size of inbound HTTP response bodies in bytes.
+
+  All metrics are labeled with `http.url` (endpoint) and `http.method`.
