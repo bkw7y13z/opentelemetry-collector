@@ -1,0 +1,23 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus, exporter/otlp, ...
+component: configgrpc
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`)
+description: Add client-side instrumentation metrics for gRPC connections, including connection state, active streams, and message size histograms.
+
+# One or more tracking issues related to the change
+issues: [14412]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+notes: |
+  Adds the following metrics to configgrpc client connections:
+  - `otelcol_configgrpc_client_connections` (gauge): Number of active gRPC client connections.
+  - `otelcol_configgrpc_client_streams` (gauge): Number of active gRPC client streams.
+  - `otelcol_configgrpc_client_request_duration` (histogram): Duration of gRPC client requests in milliseconds.
+  - `otelcol_configgrpc_client_request_size` (histogram): Size of gRPC client request messages in bytes.
+  - `otelcol_configgrpc_client_response_size` (histogram): Size of gRPC client response messages in bytes.
+  These metrics include `target` and `method` attributes for filtering.
