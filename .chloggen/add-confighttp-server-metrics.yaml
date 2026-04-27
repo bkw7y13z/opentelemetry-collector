@@ -1,0 +1,27 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/confighttp
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`).
+change_description: Add server-side HTTP metrics instrumentation to confighttp, reporting request duration, request size, and response size with endpoint and status code attributes.
+
+# One or more tracking issues related to the change
+issues: [12345]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+additional_details: |
+  Adds OpenTelemetry instrumentation to the confighttp server handler, tracking:
+  - `http.server.request.duration` (histogram, ms): Duration of HTTP server requests
+  - `http.server.request.body.size` (histogram, By): Size of HTTP server request bodies
+  - `http.server.response.body.size` (histogram, By): Size of HTTP server response bodies
+  
+  Attributes reported:
+  - `http.route`: The matched route pattern
+  - `http.request.method`: The HTTP method
+  - `http.response.status_code`: The HTTP response status code
+  - `server.address`: The server address
+  - `server.port`: The server port
