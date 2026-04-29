@@ -1,0 +1,29 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus, exporter/otlp, ...
+component: configgrpc
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`)
+Note: A changelog entry is not required for patches to existing changelog entries or typo fixes.
+note: Add auth metrics instrumentation to configgrpc server, tracking authentication attempts, successes, and failures with relevant attributes such as auth scheme and status.
+
+# One or more tracking issues related to the change
+issues: [14411]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+subtext: |
+  Adds the following metrics to configgrpc server:
+  - `otelcol.receiver.grpc.auth.duration` — duration of authentication calls
+  - `otelcol.receiver.grpc.auth.active_requests` — number of in-flight auth requests
+  These metrics include attributes for the auth scheme and outcome (success/failure),
+  enabling better observability of authentication behavior in gRPC servers.
+
+# Optional: The change log or logs in which this entry should be included.
+# e.g. '[user-facing, api]' or '[user-facing]'
+# Include 'user-facing' if the change is relevant to end users.
+# Include 'api' if there is a change to a library API.
+# Default: '[user-facing]'
+change_logs: [user-facing, api]
