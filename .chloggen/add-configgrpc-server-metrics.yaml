@@ -1,0 +1,26 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/configgrpc
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`)
+Note: >
+  Add server-side metrics support to configgrpc. This change instruments gRPC server
+  connections with OpenTelemetry metrics, tracking active connections, connection
+  duration, and request counts per server endpoint.
+
+# One or more tracking issues related to the change
+issues: [12345]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+subtext: |
+  New metrics added for gRPC server:
+  - `rpc.server.active_rpcs`: Number of active RPCs on the server
+  - `rpc.server.duration`: Duration of RPCs on the server, measured in milliseconds
+  - `rpc.server.request.size`: Measures the size of RPC request messages (uncompressed)
+  - `rpc.server.response.size`: Measures the size of RPC response messages (uncompressed)
+  - `rpc.server.requests_per_rpc`: Measures the number of messages received per RPC
+  - `rpc.server.responses_per_rpc`: Measures the number of messages sent per RPC
