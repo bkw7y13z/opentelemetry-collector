@@ -1,0 +1,33 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/configretry
+
+# A brief description of the change. Surround your text with quotes ("")
+# if it contains special characters like colons (:) or if it is a multi-line string.
+short_description: Add telemetry metrics for retry operations in configretry
+
+# One or more tracking issues related to the change
+issues: [14411]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+change_description: |
+  Add OpenTelemetry metrics instrumentation to the configretry package to expose
+  retry attempt counts, retry delays, and retry failures as observable metrics.
+  This enables operators to monitor retry behavior across exporters and other
+  components that use the retry helper.
+
+# (Optional) A list of deprecations introduced by this change.
+deprecations: []
+
+# (Optional) A list of new features introduced by this change.
+new_features:
+  - name: otelcol_retry_attempts_total
+    description: Total number of retry attempts made by a component
+  - name: otelcol_retry_failures_total
+    description: Total number of permanent failures after exhausting retries
+  - name: otelcol_retry_delay_seconds
+    description: Histogram of delay durations between retry attempts
