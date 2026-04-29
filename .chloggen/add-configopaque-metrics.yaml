@@ -1,0 +1,29 @@
+# One of 'breaking', 'deprecation', 'new_component', 'enhancement', 'bug_fix'
+change_type: enhancement
+
+# The name of the component, e.g. receiver/prometheus
+component: config/configtelemetry
+
+# A brief description of the change. Surround your text with quotes ("...") if it needs to start with a backtick (`)
+Note: |
+  Add support for reporting opaque/sensitive configuration field metrics with
+  redacted values to prevent leaking secrets through telemetry pipelines.
+
+# One or more tracking issues related to the change
+issues: [14412]
+
+# (Optional) One or more lines of additional information to render under the primary note.
+# These lines will be padded with 2 spaces and then inserted directly into the changelog.
+# Use pipe (|) for multiline entries.
+subtext: |
+  Metrics for configuration fields marked as opaque (e.g., passwords, tokens,
+  API keys) will now report a redacted placeholder value instead of the actual
+  secret, ensuring sensitive data is not exposed through observability signals.
+
+# If your change doesn't affect end users or the exported elements of any package,
+# you should instead start your pull request title with [chore] or use the "chore" label.
+# Optional: The change log or logs in which this entry should be included.
+# e.g. '[user]' or '[user, api]'
+# Include 'user' if the change is relevant to end users.
+# Include 'api' if there are API changes.
+change_logs: [user, api]
